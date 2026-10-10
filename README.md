@@ -1,144 +1,180 @@
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&amp;color=0:0f2027,50:203a43,100:00d9a5&amp;height=200&amp;section=header&amp;text=MapleTech%20Enterprise%20Network&amp;fontSize=44&amp;fontColor=ffffff&amp;fontAlignY=36&amp;desc=Four-Branch%20Network%20Design%20and%20Configuration%20%7C%20Cisco%20Packet%20Tracer&amp;descSize=16&amp;descAlignY=58" alt="header" />
+<img src="https://capsule-render.vercel.app/api?type=rect&amp;color=0:0b132b,60:1c2541,100:ff9f1c&amp;height=190&amp;section=header&amp;text=MAPLETECH%20NOC&amp;fontSize=58&amp;fontColor=ffffff&amp;fontAlignY=42&amp;desc=Enterprise%20Network%20Design%20and%20Configuration&amp;descSize=18&amp;descAlignY=68&amp;animation=twinkling" alt="MapleTech banner" />
 
-<a href="https://git.io/typing-svg">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&amp;weight=600&amp;size=22&amp;duration=3000&amp;pause=1000&amp;color=00D9A5&amp;center=true&amp;vCenter=true&amp;width=720&amp;lines=Star+and+extended+star+LANs+per+branch;Full+mesh+WAN+routed+with+RIP;Central+DHCP+and+DNS+with+IP+helper;Email%2C+web+and+IoT+servers+%F0%9F%8C%90" alt="Typing SVG" />
-</a>
+<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&amp;weight=700&amp;size=20&amp;duration=2800&amp;pause=900&amp;color=FF9F1C&amp;background=0B132B&amp;center=true&amp;vCenter=true&amp;width=760&amp;height=50&amp;lines=MapleTech%23+show+topology;4+branches+%7C+6+WAN+links+%7C+RIP+routing;Star+and+extended+star+LANs;Central+DHCP+%2B+DNS+with+IP+helper" alt="Typing SVG" />
 
-![Module](https://img.shields.io/badge/Module-Introduction%20to%20Networking-0f2027?style=flat-square&amp;logoColor=00d9a5)
-![University](https://img.shields.io/badge/Asia%20Pacific%20University-APU-8A1538?style=flat-square)
-![Tool](https://img.shields.io/badge/Cisco-Packet%20Tracer-1BA0D7?style=flat-square&amp;logo=cisco&amp;logoColor=white)
-![Type](https://img.shields.io/badge/Type-Group%20Project-00d9a5?style=flat-square)
+![Branches](https://img.shields.io/badge/Branches-4-ff9f1c?style=flat-square&amp;labelColor=0b132b)
+![WAN links](https://img.shields.io/badge/WAN%20links-6-ff9f1c?style=flat-square&amp;labelColor=0b132b)
+![Routing](https://img.shields.io/badge/Routing-RIP-ff9f1c?style=flat-square&amp;labelColor=0b132b)
+![Simulator](https://img.shields.io/badge/Simulator-Cisco%20Packet%20Tracer-1ba0d7?style=flat-square&amp;labelColor=0b132b)
+![Module](https://img.shields.io/badge/APU-Introduction%20to%20Networking-8a1538?style=flat-square&amp;labelColor=0b132b)
 
 </div>
 
 ---
 
-## 📖 About This Project
+## 📑 Contents
 
-A group assignment for **Introduction to Networking** at Asia Pacific University (2023). The team designed and configured the network for **MapleTech**, a fictional company with four branches in Malaysia: **Kuala Lumpur (KL), Ipoh, Melaka and Penang**.
-
-Each branch has its own LAN, and the four branches are joined by a WAN so staff can share resources and communicate securely across the whole organisation. The project covers everything from floor plans and addressing through to device configuration and working network services.
-
-**What the report delivers**
-
-- A floor plan for every branch, drawn in Visual Paradigm
-- A logical topology per branch in Cisco Packet Tracer, with justification
-- A subnet and IP addressing scheme per branch, with justification
-- Switch and router configuration, including device security
-- Central DHCP and DNS, plus email, web and IoT servers
-- WAN routing between all four branches using RIP
+[Overview](#-overview) · [Who uses this](#-who-uses-this-design-and-why) · [WAN map](#-wan-map) · [Branches](#-branches-and-addressing) · [Services](#-services) · [Configuration](#-configuration-cheat-sheet) · [Improvements](#-what-i-would-improve) · [Team](#-team) · [References](#-references)
 
 ---
 
-## 🔍 Who Uses This Kind of Design and Why
+## 🧭 Overview
 
-| Audience | How they use it | Why it matters |
-|---|---|---|
-| **Network engineers** | Plan subnets, choose topologies and configure routing for multi-site companies | A clear addressing plan and a redundant WAN avoid renumbering and outages later |
-| **IT support and helpdesk** | Rely on DHCP, DNS and well-named devices to find and fix problems quickly | Central services and consistent naming make troubleshooting faster |
-| **IT managers** | Weigh cost, scalability and resilience when choosing star, extended star or mesh | The report documents the trade-offs behind each choice |
-| **Security teams** | Review device hardening, segmentation and IoT exposure | Per-room subnets and secured switches limit what a compromise can reach |
-| **Students and trainers** | Reuse the scenario to practise subnetting, DHCP relay and RIP in Packet Tracer | It is a complete, realistic end-to-end exercise |
+A group project for **Introduction to Networking** at Asia Pacific University (2023). The team designed the network for **MapleTech**, a fictional company with four Malaysian branches: **Kuala Lumpur (KL), Ipoh, Melaka and Penang**.
 
----
+Every branch gets its own LAN. The branches are joined by a WAN so staff share resources and talk to each other inside the company's own network.
 
-## 🗺️ Network Overview
-
-```mermaid
-flowchart LR
-    KL["KL Branch<br/>192.168.90.0"]
-    PEN["Penang Branch<br/>192.168.80.0"]
-    IPO["Ipoh Branch<br/>192.168.70.0"]
-    MEL["Melaka Branch<br/>192.168.60.0"]
-    MEL ---|210.100.1.0| PEN
-    MEL ---|210.100.2.0| IPO
-    IPO ---|210.100.3.0| PEN
-    KL ---|210.100.4.0| MEL
-    KL ---|210.100.5.0| IPO
-    KL ---|210.100.6.0| PEN
-    style KL fill:#203a43,color:#fff,stroke:#00d9a5
-    style PEN fill:#203a43,color:#fff,stroke:#00d9a5
-    style IPO fill:#203a43,color:#fff,stroke:#00d9a5
-    style MEL fill:#203a43,color:#fff,stroke:#00d9a5
+```text
++---------------------- PROJECT AT A GLANCE ----------------------+
+| Company        : MapleTech                                      |
+| Sites          : KL | Ipoh | Melaka | Penang                     |
+| LAN design     : star (rooms) + extended star (larger rooms)    |
+| WAN design     : full mesh, serial point-to-point, RIP          |
+| Addressing     : private Class C per branch, VLSM per room      |
+| Central DHCP   : Melaka    |  Central DNS : Melaka              |
+| Servers        : web (Penang), email (Ipoh), IoT (KL)           |
+| Built with     : Cisco Packet Tracer + Visual Paradigm          |
++------------------------------------------------------------------+
 ```
 
-### Topologies used
+**Deliverables:** floor plans, logical topologies with justification, IP schemes with justification, switch and router configuration, DHCP and DNS, and working email, web and IoT servers.
 
-| Level | Topology | Why |
+---
+
+## 🔍 Who Uses This Design and Why
+
+| Who | What they do with it | Why it matters |
 |---|---|---|
-| Inside each room | **Star** | Easy to manage, a failed device does not affect the others, simple to add devices |
-| Larger rooms | **Extended star** | Extra switches hang off the main switch, so the network can grow and faults stay contained |
-| Between branches (WAN) | **Full mesh** | Every branch router links to every other, so traffic survives a single link failure |
+| 🛠️ **Network engineers** | Plan subnets, pick topologies, configure routing for multi-site firms | A clean addressing plan and a redundant WAN avoid painful renumbering and outages |
+| 🎧 **IT support** | Lean on DHCP, DNS and consistent device naming | Central services make faults quicker to trace and fix |
+| 📊 **IT managers** | Compare cost, scalability and resilience of star, extended star and mesh | The report spells out the trade-off behind each choice |
+| 🛡️ **Security teams** | Review device hardening, segmentation and IoT exposure | One subnet per room limits how far a compromise can spread |
+| 🎓 **Students and trainers** | Practise subnetting, DHCP relay and RIP | A complete scenario from floor plan to working services |
 
-**Trade-offs the report notes:** a star depends on its central switch, extended stars add cabling cost and can congest the core switch, and a full mesh is more expensive to build and maintain.
+---
+
+## 🌐 WAN Map
+
+Four branch routers, each linked to every other one. If a single link fails, traffic can still reach every site.
+
+```text
+                    [ MELAKA  192.168.60.0 ]
+                   /           |            \
+         210.100.4.0     210.100.2.0     210.100.1.0
+                 /             |              \
+ [ KL  192.168.90.0 ]--210.100.6.0--[ PENANG  192.168.80.0 ]
+                 \             |              /
+         210.100.5.0           |        210.100.3.0
+                   \           |            /
+                    [ IPOH  192.168.70.0 ]
+```
+
+| Link | Network | Link | Network |
+|---|---|---|---|
+| Melaka to Penang | `210.100.1.0` | KL to Melaka | `210.100.4.0` |
+| Melaka to Ipoh | `210.100.2.0` | KL to Ipoh | `210.100.5.0` |
+| Ipoh to Penang | `210.100.3.0` | KL to Penang | `210.100.6.0` |
+
+### Why these topologies
+
+| Where | Topology | Reason |
+|---|---|---|
+| Inside rooms | ⭐ Star | Simple to manage, a failed device does not affect the rest, easy to add devices |
+| Larger rooms | 🌟 Extended star | Extra switches hang off the main one, so the network grows and faults stay local |
+| Between branches | 🕸️ Full mesh | Redundant paths, so one broken link does not cut a site off |
+
+The report is honest about the costs: a star depends on its central switch, extended stars add cabling and can congest the core, and a full mesh is expensive to build.
 
 ---
 
 ## 🏢 Branches and Addressing
 
-Every branch uses a private Class C range and is split into one subnet per room or department using variable-length subnet masks (VLSM). Using private addresses keeps internal traffic isolated from the public internet.
+Each branch uses a private Class C range, split per room with variable-length masks. Private addressing keeps internal traffic off the public internet.
 
-| Branch | Network | Subnets (largest to smallest) | Designer |
-|---|---|---|---|
-| **KL** | `192.168.90.0` | Finance `/25`, HR `/26`, Server room `/27`, CEO room `/28` | Mahmoud Samy Aly Ibrahim Shahin |
-| **Penang** | `192.168.80.0` | Staff office `/26`, Reception `/27`, Manager `/27`, Server room `/28` | Mohamed Abdurrazag Jaber Seklani |
-| **Ipoh** | `192.168.70.0` | Customer service `/26`, Sales `/27`, IT office `/28`, Server office `/28` | Shady Ehab Assad Ibrahim |
-| **Melaka** | `192.168.60.0` | Office room `/26`, Break room `/27`, Server room `/28` | Mohammed Rasheed Yehia Al Haddad (leader) |
+<details>
+<summary><b>🇲🇾 KL — 192.168.90.0</b> · designed by Mahmoud Samy Aly Ibrahim Shahin</summary>
 
-The full per-subnet tables (network address, gateway, usable range and broadcast) are in the report.
+| Subnet | Network | Gateway |
+|---|---|---|
+| Finance | `192.168.90.0/25` | `192.168.90.1` |
+| HR | `192.168.90.128/26` | `192.168.90.129` |
+| Server room | `192.168.90.192/27` | `192.168.90.193` |
+| CEO room | `192.168.90.224/28` | `192.168.90.225` |
 
-### WAN links
+</details>
 
-Routers are joined by serial point-to-point links, one per pair of branches:
+<details>
+<summary><b>🇲🇾 Penang — 192.168.80.0</b> · designed by Mohamed Abdurrazag Jaber Seklani</summary>
 
-| Link | Network |
-|---|---|
-| Melaka and Penang | `210.100.1.0` |
-| Melaka and Ipoh | `210.100.2.0` |
-| Ipoh and Penang | `210.100.3.0` |
-| KL and Melaka | `210.100.4.0` |
-| KL and Ipoh | `210.100.5.0` |
-| KL and Penang | `210.100.6.0` |
+| Subnet | Network | Gateway |
+|---|---|---|
+| Staff office | `192.168.80.0/26` | `192.168.80.1` |
+| Reception | `192.168.80.64/27` | `192.168.80.65` |
+| Manager | `192.168.80.96/27` | `192.168.80.97` |
+| Server room | `192.168.80.128/28` | `192.168.80.129` |
+
+</details>
+
+<details>
+<summary><b>🇲🇾 Ipoh — 192.168.70.0</b> · designed by Shady Ehab Assad Ibrahim</summary>
+
+| Subnet | Network | Gateway |
+|---|---|---|
+| Customer service office | `192.168.70.0/26` | `192.168.70.1` |
+| Sales office | `192.168.70.64/27` | `192.168.70.65` |
+| IT office | `192.168.70.96/28` | `192.168.70.97` |
+| Server office | `/28` (see the report for the exact block) | see report |
+
+</details>
+
+<details>
+<summary><b>🇲🇾 Melaka — 192.168.60.0</b> · designed by Mohammed Rasheed Yehia Al Haddad (leader)</summary>
+
+| Subnet | Network | Gateway |
+|---|---|---|
+| Office room | `192.168.60.0/26` | `192.168.60.1` |
+| Break room | `192.168.60.64/27` | `192.168.60.65` |
+| Server room | `192.168.60.96/28` | `192.168.60.97` |
+
+</details>
 
 ---
 
 ## 🖥️ Services
 
-| Service | Location | Purpose |
-|---|---|---|
-| **DHCP** | Melaka server room | One server hands out addresses for every branch, with a pool per room (gateway, DNS, start address and mask) |
-| **DNS** | Melaka server room | Resolves company names so users do not need to remember IPs |
-| **Web server** | Penang server room | Hosts the MapleTech website |
-| **Email server** | Ipoh | SMTP and POP3 for the company mail domain, with a user account per team member |
-| **IoT server** | KL | Central dashboard for cameras, smoke detectors, sensors and appliances |
+| | Service | Where | What it does |
+|---|---|---|---|
+| 🟢 | **DHCP** | Melaka server room | One server for all branches, with a pool per room (gateway, DNS, start address, mask) |
+| 🟢 | **DNS** | Melaka server room | Name resolution, so users type names instead of IP addresses |
+| 🟢 | **Web** | Penang server room | Hosts the MapleTech website |
+| 🟢 | **Email** | Ipoh | SMTP and POP3 for the company mail domain, one account per team member |
+| 🟢 | **IoT** | KL | Dashboard for cameras, smoke detectors, sensors and appliances |
 
-**DHCP across branches:** routers use `ip helper-address` on the LAN-facing interface so DHCP requests from other branches are forwarded to the central server.
+**DHCP relay:** each router uses `ip helper-address` on its LAN-facing interface to forward requests to the central DHCP server.
 
-**IoT devices modelled:** webcams, smoke detectors, RFID reader on the server room, trip sensors, air conditioners, appliances, fans and doors.
+**IoT devices in the design:** webcams, smoke detectors, an RFID reader for the server room, trip sensors, air conditioners, fans, doors and appliances.
 
 ---
 
-## ⚙️ Configuration Highlights
+## ⌨️ Configuration Cheat Sheet
 
-Example patterns used on the switches and routers (values shown as placeholders):
+Values in angle brackets are placeholders.
+
+<details>
+<summary><b>Switch: management IP, hostname, banner and passwords</b></summary>
 
 ```text
-! Management IP on a switch
 enable
 configure terminal
+hostname <Branch>_switch
 interface vlan 1
  ip address <switch-ip> <mask>
  no shutdown
  description <room> switch
 exit
 ip default-gateway <gateway-ip>
-end
-copy running-config startup-config
-
-! Hostname, banner and password protection
-hostname <Branch>_switch
 banner motd $ <room name> $
 line console 0
  password <console-password>
@@ -146,44 +182,64 @@ line console 0
 exit
 service password-encryption
 enable secret <privilege-password>
+end
+copy running-config startup-config
+```
 
-! DHCP relay on a router interface
+</details>
+
+<details>
+<summary><b>Router: DHCP relay and RIP</b></summary>
+
+```text
+enable
+configure terminal
 interface <lan-interface>
  ip helper-address <dhcp-server-ip>
  no shutdown
-
-! RIP routing
+exit
 router rip
  network <connected-network>
+ network <connected-network>
+end
+copy running-config startup-config
 ```
 
-> 🔒 The report lists the lab device passwords. They are deliberately left out of this README.
+</details>
 
-**Security measures applied:** device hostnames, login banners, console and privileged-mode passwords, and password encryption on every switch and router.
-
-**Ideas for improvement:** use `enable secret` everywhere (not `enable password`), move management to SSH, add VLANs and access control lists between departments, run RIPv2 or OSPF, and add a second DHCP and DNS server for redundancy.
+> 🔒 The report lists the lab's device passwords. They are intentionally not repeated here.
 
 ---
 
-## 🧰 Tools and Technologies
+## 🔧 What I Would Improve
 
-![Packet Tracer](https://img.shields.io/badge/Cisco%20Packet%20Tracer-1BA0D7?style=for-the-badge&amp;logo=cisco&amp;logoColor=white)
+- Use `enable secret` everywhere and move management access to SSH
+- Add VLANs and access control lists between departments
+- Move from RIP to RIPv2 or OSPF for faster convergence and VLSM support
+- Add a second DHCP and DNS server so Melaka is not a single point of failure
+- Add a redundant core switch in each branch
+
+---
+
+## 🧰 Tools
+
+![Packet Tracer](https://img.shields.io/badge/Cisco%20Packet%20Tracer-1ba0d7?style=for-the-badge&amp;logo=cisco&amp;logoColor=white)
 ![Cisco IOS](https://img.shields.io/badge/Cisco%20IOS-049fd9?style=for-the-badge&amp;logo=cisco&amp;logoColor=white)
-![Visual Paradigm](https://img.shields.io/badge/Visual%20Paradigm-0f2027?style=for-the-badge&amp;logoColor=00d9a5)
-![RIP](https://img.shields.io/badge/Routing-RIP-203a43?style=for-the-badge&amp;logoColor=00d9a5)
-![DHCP](https://img.shields.io/badge/DHCP-203a43?style=for-the-badge&amp;logoColor=00d9a5)
-![DNS](https://img.shields.io/badge/DNS-203a43?style=for-the-badge&amp;logoColor=00d9a5)
+![Visual Paradigm](https://img.shields.io/badge/Visual%20Paradigm-1c2541?style=for-the-badge&amp;logoColor=ff9f1c)
+![RIP](https://img.shields.io/badge/RIP-1c2541?style=for-the-badge&amp;logoColor=ff9f1c)
+![DHCP](https://img.shields.io/badge/DHCP-1c2541?style=for-the-badge&amp;logoColor=ff9f1c)
+![DNS](https://img.shields.io/badge/DNS-1c2541?style=for-the-badge&amp;logoColor=ff9f1c)
 
 ---
 
 ## 👥 Team
 
-| Member | Responsibility |
+| Member | Branch and work |
 |---|---|
-| Mohammed Rasheed Yehia Al Haddad (leader) | Melaka branch: floor plan, topology, addressing, switch and router configuration, DHCP, DNS |
-| Mohamed Abdurrazag Jaber Seklani | Penang branch: floor plan, topology, addressing, configuration, web server |
-| Shady Ehab Assad Ibrahim | Ipoh branch: floor plan, topology, addressing, configuration, email server |
-| Mahmoud Samy Aly Ibrahim Shahin | KL branch: floor plan, topology, addressing, configuration, IoT server |
+| **Mohammed Rasheed Yehia Al Haddad** (leader) | Melaka: floor plan, topology, addressing, configuration, DHCP and DNS |
+| **Mohamed Abdurrazag Jaber Seklani** | Penang: floor plan, topology, addressing, configuration, web server |
+| **Shady Ehab Assad Ibrahim** | Ipoh: floor plan, topology, addressing, configuration, email server |
+| **Mahmoud Samy Aly Ibrahim Shahin** | KL: floor plan, topology, addressing, configuration, IoT server |
 
 Each member also connected their branch router to the other branches.
 
@@ -201,15 +257,15 @@ Each member also connected their branch router to the other branches.
 
 ---
 
-## 📫 Let's Connect
-
 <div align="center">
+
+### 📫 Let's Connect
 
 **Shady** · Cyber Security student, Asia Pacific University
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&amp;logo=linkedin&amp;logoColor=white)](https://www.linkedin.com/in/shady-ehab-07666a255)
-[![Email](https://img.shields.io/badge/Email-Say%20Hello-D14836?style=for-the-badge&amp;logo=gmail&amp;logoColor=white)](mailto:shadysoliman3322@gmail.com)
+[![Email](https://img.shields.io/badge/Email-Say%20Hello-ff9f1c?style=for-the-badge&amp;logo=gmail&amp;logoColor=0b132b)](mailto:shadysoliman3322@gmail.com)
 
-<img src="https://capsule-render.vercel.app/api?type=waving&amp;color=0:00d9a5,50:203a43,100:0f2027&amp;height=100&amp;section=footer" alt="footer" />
+<img src="https://capsule-render.vercel.app/api?type=rect&amp;color=0:ff9f1c,40:1c2541,100:0b132b&amp;height=70&amp;section=footer" alt="footer" />
 
 </div>
